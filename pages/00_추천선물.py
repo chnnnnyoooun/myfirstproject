@@ -25,4 +25,15 @@ mbti_gift_data = {
     # 필요하면 모든 MBTI 유형을 추가할 수 있음
 }
 
-# Streamlit
+# Streamlit 앱 UI
+st.title("MBTI 선물 추천기 🎁")
+st.write("당신의 MBTI를 선택하면, 어울리는 선물 3가지를 추천해드립니다!")
+
+selected_mbti = st.selectbox("MBTI를 선택하세요", list(mbti_gift_data.keys()))
+
+if selected_mbti:
+    st.subheader(f"{selected_mbti} 유형을 위한 선물 추천 🎉")
+    gifts = mbti_gift_data[selected_mbti]
+    for idx, (gift, description) in enumerate(gifts, start=1):
+        st.markdown(f"**{idx}. {gift}**")
+        st.write(f"- {description}")
