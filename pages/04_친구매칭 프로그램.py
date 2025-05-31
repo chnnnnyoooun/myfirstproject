@@ -95,4 +95,6 @@ try:
 except FileNotFoundError:
     st.warning("등록된 친구가 없습니다.")
 
-st_folium(friend_map, width=700, height=500)
+location_info = st_folium(m, width=700, height=500, key="location_picker")
+...
+st_folium(friend_map, width=700, height=500, key="friend_map")
