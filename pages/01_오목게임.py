@@ -1,17 +1,14 @@
 import streamlit as st
 
 st.set_page_config(page_title="오목 게임", layout="wide")
-st.title("🎮 오목 게임 (Streamlit만 사용)")
+st.title("🎮 오목 게임 (돌 크기 키우기 & 판 작게)")
 
-# 보드 크기 정의
-BOARD_SIZE = 15
+BOARD_SIZE = 10  # 10x10 판으로 축소
 
-# 초기 세션 상태 설정
 if "board" not in st.session_state:
     st.session_state.board = [["" for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
-    st.session_state.turn = "●"  # 흑돌 먼저
+    st.session_state.turn = "●"
 
-# 보드 그리기
 for i in range(BOARD_SIZE):
     cols = st.columns(BOARD_SIZE)
     for j in range(BOARD_SIZE):
@@ -19,18 +16,17 @@ for i in range(BOARD_SIZE):
         if cell == "":
             if cols[j].button(" ", key=f"{i}-{j}"):
                 st.session_state.board[i][j] = st.session_state.turn
-                # 턴 변경
                 st.session_state.turn = "○" if st.session_state.turn == "●" else "●"
-                st.rerun()  # 즉시 반영되도록 새로고침
+                st.experimental_rerun()
         else:
-            cols[j].markdown(f"**{cell}**")
+            # 돌 글자 크기 키우기 (HTML + 마크다운)
+            stone_html = f"<p style='font-size: 32px; text-align:center;'>{cell}</p>"
+            cols[j].markdown(stone_html, unsafe_allow_html=True)
 
-# 현재 턴 표시
 st.markdown("---")
 st.write(f"지금은 **{st.session_state.turn}** 차례입니다.")
 
-# 리셋 버튼
 if st.button("🔄 게임 초기화"):
     st.session_state.board = [["" for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
     st.session_state.turn = "●"
-    st.rerun()
+    st.experimental_rerun()
