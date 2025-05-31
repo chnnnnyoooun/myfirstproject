@@ -21,7 +21,7 @@ with st.form("user_info_form"):
     region = st.text_input("지역 또는 주소 입력 (지도에서 위치를 지정하세요)")
     latitude = st.number_input("위도 (지도를 클릭해 위치 자동 입력 가능)", format="%.6f")
     longitude = st.number_input("경도", format="%.6f")
-    instagram = st.text_input("인스타그램 아이디 (선택사항)", placeholder="@yourid")
+    instagram = st.text_input("인스타그램 아이디", placeholder="@yourid")
     interests = st.text_area("관심 분야 (쉼표로 구분)", placeholder="예: 음악, 영화, 운동")
 
     submitted = st.form_submit_button("정보 등록하기")
