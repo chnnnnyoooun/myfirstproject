@@ -35,12 +35,12 @@ if location_info and location_info["last_clicked"]:
 # 입력 폼
 with st.form("user_info_form"):
     st.subheader("📋 나의 정보 입력")
-    name = st.text_input("이름")
-    age = st.number_input("나이", min_value=10, max_value=100, step=1)
-    gender = st.selectbox("성별", ["남성", "여성", "기타"])
-    mbti = st.text_input("MBTI (예: INFP, ESTJ 등)").upper()
-    instagram = st.text_input("인스타그램 아이디 (선택사항)", placeholder="@yourid").replace("@", "")
-    interests = st.text_area("관심 분야 (쉼표로 구분)", placeholder="예: 음악, 영화, 운동")
+    name = st.text_input("👩이름")
+    age = st.number_input("🍰나이", min_value=10, max_value=100, step=1)
+    gender = st.selectbox("👩🏻‍🤝‍🧑🏻성별", ["남성", "여성", "기타"])
+    mbti = st.text_input("🧠MBTI (예: INFP, ESTJ 등)").upper()
+    instagram = st.text_input("📷인스타그램 아이디 (선택사항)", placeholder="@yourid").replace("@", "")
+    interests = st.text_area("🎯관심 분야 (쉼표로 구분)", placeholder="예: 음악, 영화, 운동")
 
     submitted = st.form_submit_button("정보 등록하기")
 
